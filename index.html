@@ -27,13 +27,12 @@
     <!-- ========== FULLSCREEN OVERLAY MENU ========== -->
     <div class="menu-overlay" id="menuOverlay">
         <nav class="menu-overlay__nav">
-            <a href="#showcase" class="menu-overlay__link" data-index="01">Showcase</a>
-            <a href="#talent" class="menu-overlay__link" data-index="02">Talent</a>
-            <a href="#services" class="menu-overlay__link" data-index="03">Services</a>
-            <a href="#vision" class="menu-overlay__link" data-index="04">Vision</a>
-            <a href="#testimonials" class="menu-overlay__link" data-index="05">Testimonials</a>
-            <a href="#now-playing" class="menu-overlay__link" data-index="06" id="menuNowPlaying">Now Playing</a>
-            <a href="#booking" class="menu-overlay__link" data-index="07">Book Now</a>
+            <a href="#showcase" class="menu-overlay__link" data-index="01">Our Story</a>
+            <a href="#talent" class="menu-overlay__link" data-index="02">The Roster</a>
+            <a href="#services" class="menu-overlay__link" data-index="03">What We Do</a>
+            <a href="#testimonials" class="menu-overlay__link" data-index="04">Client Stories</a>
+            <a href="#booking" class="menu-overlay__link" data-index="05">Book Now</a>
+            <a href="#" class="menu-overlay__link" data-index="06" id="menuNowPlaying">Now Playing</a>
         </nav>
         <div class="menu-overlay__footer">
             <a href="https://instagram.com/djclickz" target="_blank" rel="noopener">Instagram</a>
@@ -74,7 +73,7 @@
                 <h2 class="section-title">About 3D Sound</h2>
             </div>
             <div class="showcase__about anim-fade">
-                <p class="body-text">Founded in Toronto, 3D Sound began as a vision to elevate the way music and sound are experienced globally. What started as a passion-driven DJ collective has grown into a global entertainment brand, delivering curated sound, premium production, and unforgettable moments across weddings, private events, corporate functions, and international stages. Since it's inception in 2005, the 3D team has always maintained an emphasis on quality over quantity. When it comes to our clients' special moments we make no exceptions. We are committed to delivering nothing less than the premium sound experience.</p>
+                <p class="body-text showcase__story">Founded in Toronto, <strong>3D Sound</strong> began as a vision to <strong>elevate the way music and sound are experienced globally.</strong> What started as a passion-driven DJ collective has grown into a <strong>global entertainment brand</strong>, delivering <strong>curated sound, premium production, and unforgettable moments</strong> across weddings, private events, corporate functions, and international stages. Since its inception in <strong>2005</strong>, the 3D team has always maintained an emphasis on <strong>quality over quantity.</strong> When it comes to our clients' special moments we make no exceptions. We are committed to delivering nothing less than <strong>the premium sound experience.</strong></p>
                 <p class="body-text showcase__tagline">At 3D Sound, music has no boundary — experienced around the globe — it's the heartbeat of every experience.</p>
             </div>
             <div class="showcase__stats anim-fade">
@@ -113,7 +112,7 @@
             <div class="talent__grid">
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ JET</span></div>
+                        <img src="assets/images/jet.jpeg" alt="DJ JET">
                         <div class="talent__card-overlay">
                             <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ JET">Book Now</a>
                             <a href="https://www.instagram.com/jethu2jet/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
@@ -165,7 +164,7 @@
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ Miru</span></div>
+                        <img src="assets/images/miru.jpg" alt="DJ Miru">
                         <div class="talent__card-overlay">
                             <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Miru">Book Now</a>
                             <a href="https://www.instagram.com/_djmiru/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
@@ -384,37 +383,6 @@
         </div>
     </section>
 
-    <!-- ========== VISION / STORYTELLING SECTION ========== -->
-    <section class="vision" id="vision">
-        <div class="vision__block">
-            <div class="vision__sticky">
-                <p class="vision__text anim-fade">Imagine an event where every guest is on their feet.</p>
-            </div>
-            <div class="vision__img">
-                <!-- REPLACE: Vision image 1 — crowd dancing/energy photo, recommended 1400x900px -->
-                <div class="placeholder-img placeholder-img--cinema"><span>Vision 01</span></div>
-            </div>
-        </div>
-        <div class="vision__block">
-            <div class="vision__sticky">
-                <p class="vision__text anim-fade">Where the music hits perfectly and the energy never drops.</p>
-            </div>
-            <div class="vision__img">
-                <!-- REPLACE: Vision image 2 — DJ performing/lights photo, recommended 1400x900px -->
-                <div class="placeholder-img placeholder-img--cinema"><span>Vision 02</span></div>
-            </div>
-        </div>
-        <div class="vision__block">
-            <div class="vision__sticky">
-                <p class="vision__text anim-fade">That is what 3D Sound delivers. Every single time.</p>
-            </div>
-            <div class="vision__img">
-                <!-- REPLACE: Vision image 3 — epic event/venue photo, recommended 1400x900px -->
-                <div class="placeholder-img placeholder-img--cinema"><span>Vision 03</span></div>
-            </div>
-        </div>
-    </section>
-
     <!-- ========== TESTIMONIALS ========== -->
     <section class="testimonials" id="testimonials">
         <div class="container">
@@ -485,7 +453,7 @@
                     <a href="#services" class="footer__link">Services</a>
                     <a href="#talent" class="footer__link">Talent</a>
                     <a href="#showcase" class="footer__link">Showcase</a>
-                    <a href="#vision" class="footer__link">Vision</a>
+
                 </div>
                 <div class="footer__col">
                     <h4 class="footer__heading">Connect</h4>
@@ -526,53 +494,9 @@
                 <span>Your Library</span>
             </div>
             <div class="np-sidebar__albums" id="npAlbumList">
-                <div class="np-album-card active" data-url="https://soundcloud.com/3dsoundcrew/sets/vibes-3" data-name="Vibes 3">
-                    <div class="np-album-card__art" id="albumArt-vibes-3"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Vibes 3</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/vibes-two" data-name="Vibes Two">
-                    <div class="np-album-card__art" id="albumArt-vibes-two"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Vibes Two</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/vibe" data-name="Vibes">
-                    <div class="np-album-card__art" id="albumArt-vibe"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Vibes</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/vib3s-exclusive" data-name="Vib3s Exclusive">
-                    <div class="np-album-card__art" id="albumArt-vib3s-exclusive"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Vib3s Exclusive</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/bounce" data-name="Bounce">
-                    <div class="np-album-card__art" id="albumArt-bounce"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Bounce</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/civics-mixes" data-name="Civics Mixes">
-                    <div class="np-album-card__art" id="albumArt-civics-mixes"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Civics Mixes</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/civics-mixes-2" data-name="Civics Mixes 2">
-                    <div class="np-album-card__art" id="albumArt-civics-mixes-2"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Civics Mixes 2</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/civics-mixes-3-the-final-lap" data-name="Civics Mixes 3 — The Final Lap">
-                    <div class="np-album-card__art" id="albumArt-civics-mixes-3"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Civics Mixes 3 — The Final Lap</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/hold-this-3d-sound-1" data-name="Hold This">
-                    <div class="np-album-card__art" id="albumArt-hold-this"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Hold This</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/love-clickz" data-name="Love Clickz">
-                    <div class="np-album-card__art" id="albumArt-love-clickz"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Love Clickz</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/love-clickz-2-deluxe" data-name="Love Clickz 2 Deluxe">
-                    <div class="np-album-card__art" id="albumArt-love-clickz-2"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">Love Clickz 2 Deluxe</span><span class="np-album-card__type">Playlist</span></div>
-                </div>
-                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/wttf-3d-sound" data-name="WTTF">
-                    <div class="np-album-card__art" id="albumArt-wttf"></div>
-                    <div class="np-album-card__info"><span class="np-album-card__name">WTTF</span><span class="np-album-card__type">Playlist</span></div>
+                <div class="np-album-card active" data-album="vib3s" data-name="VIB3S">
+                    <div class="np-album-card__art" style="background-image:url('assets/audio/vib3s/cover.jpg')"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">VIB3S</span><span class="np-album-card__type">Album</span></div>
                 </div>
             </div>
         </aside>
@@ -586,7 +510,7 @@
                     <div class="np-album-hero__art" id="npArtwork"></div>
                     <div class="np-album-hero__meta">
                         <span class="np-album-hero__type">Playlist</span>
-                        <h1 class="np-album-hero__title" id="npAlbumTitle">Vibes 3</h1>
+                        <h1 class="np-album-hero__title" id="npAlbumTitle">VIB3S</h1>
                         <div class="np-album-hero__details">
                             <img src="assets/images/logo-icon-white.png" alt="" class="np-album-hero__avatar">
                             <span class="np-album-hero__artist-name">3D SOUND</span>
@@ -633,11 +557,6 @@
         </button>
     </div>
 
-    <!-- SoundCloud Widget (hidden) -->
-    <iframe id="sc-widget" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/3dsoundcrew/sets/vibes-3&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
-        style="position:absolute;width:0;height:0;border:0;overflow:hidden;"></iframe>
-
     <!-- Playback Bar -->
     <div class="playback-bar" id="playbackBar">
         <div class="playback-bar__progress-wrap" id="progressWrap">
@@ -647,7 +566,7 @@
             <div class="playback-bar__track-info">
                 <div class="playback-bar__artwork" id="pbArtwork"></div>
                 <div class="playback-bar__meta">
-                    <span class="playback-bar__title" id="pbTitle">Loading...</span>
+                    <span class="playback-bar__title" id="pbTitle">Love of Life (Outro)</span>
                     <span class="playback-bar__artist" id="pbArtist">3D SOUND</span>
                 </div>
             </div>
@@ -674,7 +593,6 @@
         </div>
     </div>
 
-    <script src="https://w.soundcloud.com/player/api.js"></script>
     <script src="js/main.js"></script>
     <img height="1" width="1" style="display:none" src="https://www.honeybook.com/p.png?pid=6795506e6917fe0026f53072" alt="">
     <script>

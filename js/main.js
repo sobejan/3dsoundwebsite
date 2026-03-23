@@ -298,15 +298,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* --------------------------------------------------
-       SOUNDCLOUD PLAYBACK BAR + NOW PLAYING OVERLAY
+       LOCAL AUDIO PLAYBACK BAR + NOW PLAYING OVERLAY
        -------------------------------------------------- */
-    function initSoundCloud() {
-    const scIframe = document.getElementById('sc-widget');
-    if (!scIframe || !window.SC || !window.SC.Widget) {
-        return setTimeout(initSoundCloud, 200);
-    }
+    function initPlayer() {
     {
-        let widget = SC.Widget(scIframe);
+        // --- Album data (local files) ---
+        var albums = {
+            vib3s: {
+                name: 'VIB3S',
+                cover: 'assets/audio/vib3s/cover.jpg',
+                artist: '3D SOUND',
+                tracks: [
+                    { title: 'Intro', file: 'assets/audio/vib3s/1. Intro (MASTERED).mp3' },
+                    { title: 'Amabae', file: 'assets/audio/vib3s/2. Amabae (MASTERED).mp3' },
+                    { title: 'Mines Forever', file: 'assets/audio/vib3s/3. Mines Forever (MASTERED).mp3' },
+                    { title: 'Swoon (Feat. Vaishaly)', file: 'assets/audio/vib3s/4. Swoon Feat. Vaishaly (MASTERED).mp3' },
+                    { title: 'Summer 08', file: 'assets/audio/vib3s/5. Summer 08 (MASTERED).mp3' },
+                    { title: 'Your Bed', file: 'assets/audio/vib3s/6. Your Bed (MASTERED).mp3' },
+                    { title: 'Go Easy', file: 'assets/audio/vib3s/7. Go Easy (MASTERED).mp3' },
+                    { title: 'Lost Poem', file: 'assets/audio/vib3s/8. Lost Poem (MASTERED).mp3' },
+                    { title: '5AM in Swiss', file: 'assets/audio/vib3s/9. 5AM in Swiss (MASTERED).mp3' },
+                    { title: 'Her Eyes', file: 'assets/audio/vib3s/10. Her Eyes (MASTERED).mp3' },
+                    { title: 'Rivers', file: 'assets/audio/vib3s/11. Rivers (MASTERED).mp3' },
+                    { title: 'Poetic Love', file: 'assets/audio/vib3s/12. Poetic Love (MASTERED).mp3' },
+                    { title: 'Home (Feat. Vaishaly)', file: 'assets/audio/vib3s/13. Home Feat. Vaishaly (MASTERED).mp3' },
+                    { title: 'Voicemail', file: 'assets/audio/vib3s/14. Voicemail (MASTERED).mp3' },
+                    { title: 'Talk To Me', file: 'assets/audio/vib3s/15. Talk To Me (MASTERED).mp3' },
+                    { title: 'Interlude', file: 'assets/audio/vib3s/16. Interlude (MASTERED).mp3' },
+                    { title: 'Marry Me (Feat. Jenushan)', file: 'assets/audio/vib3s/17. Marry Me Feat. Jenushan (MASTERED).mp3' },
+                    { title: 'Flower Glass', file: 'assets/audio/vib3s/18. Flower Glass (MASTERED).mp3' },
+                    { title: '222', file: 'assets/audio/vib3s/19. 222 (MASTERED).mp3' },
+                    { title: 'Amour', file: 'assets/audio/vib3s/20. Amour (MASTERED).mp3' },
+                    { title: 'Spellbound', file: 'assets/audio/vib3s/21. Spellbound (MASTERED).mp3' },
+                    { title: 'Angry Bird', file: 'assets/audio/vib3s/22. Angry Bird (MASTERED).mp3' },
+                    { title: '3AM in Sydney', file: 'assets/audio/vib3s/23. 3AM in Sydney (MASTERED).mp3' },
+                    { title: 'Beauty In The Peace (Feat. Vaishaly)', file: 'assets/audio/vib3s/24. Beauty In The Peace Feat. Vaishaly (MASTERED).mp3' },
+                    { title: 'Love of Life (Outro)', file: 'assets/audio/vib3s/25. Love of Life (Outro) (MASTERED).mp3' },
+                    { title: "I'm Done, Nevermind", file: 'assets/audio/vib3s/26. I_m Done, Nevermind (MASTERED).mp3' }
+                ]
+            }
+        };
+
+        var audio = new Audio();
+        var currentAlbumKey = 'vib3s';
+        var currentTrackIndex = 0;
+        var isPlaying = false;
 
         // --- Playback bar elements ---
         const pbPlay = document.getElementById('pbPlay');
@@ -340,41 +376,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const npMobileLibBtn = document.getElementById('npMobileLibBtn');
         const albumCards = document.querySelectorAll('.np-album-card');
 
-        let isPlaying = false;
-        let trackDuration = 0;
-        let trackList = [];
-        let currentTrackIndex = 0;
-        let currentAlbumUrl = 'https://soundcloud.com/3dsoundcrew/sets/vibes-3';
-        let soundsRetryTimer = null;
+        function currentAlbum() { return albums[currentAlbumKey]; }
 
-        function formatTime(ms) {
-            const totalSec = Math.floor(ms / 1000);
-            const min = Math.floor(totalSec / 60);
-            const sec = totalSec % 60;
-            return min + ':' + (sec < 10 ? '0' : '') + sec;
-        }
-
-        // Retry getSounds until all tracks have metadata loaded
-        function fetchSoundsWithRetry(cb, retries) {
-            if (soundsRetryTimer) clearTimeout(soundsRetryTimer);
-            retries = retries || 0;
-            widget.getSounds(function(sounds) {
-                if (!sounds || sounds.length === 0) {
-                    if (retries < 10) {
-                        soundsRetryTimer = setTimeout(function() { fetchSoundsWithRetry(cb, retries + 1); }, 1000);
-                    }
-                    return;
-                }
-                // Check if tracks still have missing metadata (title undefined or duration 0)
-                var incomplete = sounds.some(function(s) { return !s.title || s.duration === 0; });
-                if (incomplete && retries < 10) {
-                    // Render what we have so far, then retry
-                    cb(sounds);
-                    soundsRetryTimer = setTimeout(function() { fetchSoundsWithRetry(cb, retries + 1); }, 1500);
-                } else {
-                    cb(sounds);
-                }
-            });
+        function formatTime(sec) {
+            if (isNaN(sec)) return '0:00';
+            var min = Math.floor(sec / 60);
+            var s = Math.floor(sec % 60);
+            return min + ':' + (s < 10 ? '0' : '') + s;
         }
 
         function updatePlayIcons() {
@@ -384,99 +392,118 @@ document.addEventListener('DOMContentLoaded', () => {
             npIconPause.style.display = isPlaying ? 'block' : 'none';
         }
 
-        function loadTrackInfo() {
-            widget.getCurrentSound(function(sound) {
-                if (sound) {
-                    const title = sound.title || 'Unknown Track';
-                    const artist = sound.user ? sound.user.username : '3D SOUND';
-                    pbTitle.textContent = title;
-                    pbArtist.textContent = artist;
-                    if (sound.artwork_url) {
-                        const artSmall = 'url(' + sound.artwork_url.replace('-large', '-t300x300') + ')';
-                        const artLarge = 'url(' + sound.artwork_url.replace('-large', '-t500x500') + ')';
-                        pbArtwork.style.backgroundImage = artSmall;
-                        npArtwork.style.backgroundImage = artLarge;
-                    }
-                }
-            });
-            widget.getDuration(function(duration) {
-                trackDuration = duration;
-                pbDuration.textContent = formatTime(duration);
-            });
-            highlightActiveTrack();
-        }
+        function loadTrack(index, autoPlay) {
+            var album = currentAlbum();
+            if (index < 0) index = album.tracks.length - 1;
+            if (index >= album.tracks.length) index = 0;
+            currentTrackIndex = index;
+            var track = album.tracks[index];
 
-        // --- Album switching ---
-        function loadAlbum(url, name, autoPlay) {
-            currentAlbumUrl = url;
-            npAlbumTitle.textContent = name;
-            npTrackListEl.innerHTML = '<div class="np-loading">Loading tracks...</div>';
-            currentTrackIndex = 0;
-            trackDuration = 0;
+            audio.src = track.file;
+            pbTitle.textContent = track.title;
+            pbArtist.textContent = album.artist;
+            pbArtwork.style.backgroundImage = "url('" + album.cover + "')";
+            npArtwork.style.backgroundImage = "url('" + album.cover + "')";
             progressFill.style.width = '0%';
+            pbTime.textContent = '0:00';
+            pbDuration.textContent = '0:00';
+            highlightActiveTrack();
 
-            // Highlight active album in sidebar
-            albumCards.forEach(function(card) {
-                card.classList.toggle('active', card.dataset.url === url);
-            });
-
-            // Use the widget API's load method for reliable playlist switching
-            widget.load(url, {
-                auto_play: autoPlay,
-                hide_related: true,
-                show_comments: false,
-                show_user: false,
-                show_reposts: false,
-                show_teaser: false,
-                callback: function() {
-                    // This fires when the new playlist is ready
-                    fetchSoundsWithRetry(function(sounds) {
-                        trackList = sounds;
-                        renderTrackList();
-                    });
-                    loadTrackInfo();
-                    if (autoPlay) {
-                        isPlaying = true;
-                        updatePlayIcons();
-                    }
-                }
-            });
+            if (autoPlay) {
+                audio.play();
+                isPlaying = true;
+                updatePlayIcons();
+            }
         }
 
-        // --- Fetch album artwork for sidebar cards ---
-        function fetchAlbumArt(card) {
-            var url = card.dataset.url;
-            var artEl = card.querySelector('.np-album-card__art');
-            var tempIframe = document.createElement('iframe');
-            tempIframe.style.cssText = 'position:absolute;width:0;height:0;border:0;overflow:hidden;';
-            tempIframe.src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url) +
-                '&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false';
-            document.body.appendChild(tempIframe);
+        function loadAlbum(albumKey, autoPlay) {
+            currentAlbumKey = albumKey;
+            currentTrackIndex = 0;
+            var album = currentAlbum();
+            npAlbumTitle.textContent = album.name;
+            albumCards.forEach(function(card) {
+                card.classList.toggle('active', card.dataset.album === albumKey);
+            });
+            renderTrackList();
+            loadTrack(0, autoPlay);
+        }
 
-            var tempWidget = SC.Widget(tempIframe);
-            tempWidget.bind(SC.Widget.Events.READY, function() {
-                tempWidget.getSounds(function(sounds) {
-                    if (sounds && sounds.length > 0 && sounds[0].artwork_url) {
-                        artEl.style.backgroundImage = 'url(' + sounds[0].artwork_url.replace('-large', '-t200x200') + ')';
-                    }
-                    // Clean up temp iframe
-                    setTimeout(function() { tempIframe.remove(); }, 500);
+        // --- Track list rendering ---
+        function renderTrackList() {
+            var album = currentAlbum();
+            npTrackListEl.innerHTML = '';
+            npTrackCount.textContent = album.tracks.length + ' song' + (album.tracks.length !== 1 ? 's' : '');
+            album.tracks.forEach(function(track, i) {
+                var row = document.createElement('div');
+                row.className = 'np-track' + (i === currentTrackIndex ? ' active' : '');
+                if (i === currentTrackIndex && !isPlaying) row.className += ' paused';
+                var artStyle = "background-image:url('" + album.cover + "')";
+                row.innerHTML =
+                    '<div class="np-track__num"><span>' + (i + 1) + '</span>' +
+                    '<div class="np-track__playing-indicator"><div class="np-eq-bar"></div><div class="np-eq-bar"></div><div class="np-eq-bar"></div></div></div>' +
+                    '<div class="np-track__artwork" style="' + artStyle + '"></div>' +
+                    '<div class="np-track__info"><div class="np-track__title">' + track.title + '</div>' +
+                    '<div class="np-track__artist-name">' + album.artist + '</div></div>' +
+                    '<span class="np-track__duration" data-index="' + i + '"></span>';
+                row.addEventListener('click', function() {
+                    loadTrack(i, true);
+                });
+                npTrackListEl.appendChild(row);
+            });
+
+            // Load durations for each track
+            album.tracks.forEach(function(track, i) {
+                var tempAudio = new Audio();
+                tempAudio.preload = 'metadata';
+                tempAudio.src = track.file;
+                tempAudio.addEventListener('loadedmetadata', function() {
+                    var durationEl = npTrackListEl.querySelector('[data-index="' + i + '"]');
+                    if (durationEl) durationEl.textContent = formatTime(tempAudio.duration);
                 });
             });
         }
 
-        // Fetch art for all sidebar albums
-        albumCards.forEach(function(card) {
-            fetchAlbumArt(card);
+        function highlightActiveTrack() {
+            document.querySelectorAll('.np-track').forEach(function(el, i) {
+                el.classList.toggle('active', i === currentTrackIndex);
+                el.classList.toggle('paused', i === currentTrackIndex && !isPlaying);
+            });
+        }
+
+        // --- Audio events ---
+        audio.addEventListener('timeupdate', function() {
+            if (audio.duration > 0) {
+                var pct = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = pct + '%';
+                pbTime.textContent = formatTime(audio.currentTime);
+            }
         });
 
-        // Album card click handlers
-        albumCards.forEach(function(card) {
-            card.addEventListener('click', function() {
-                loadAlbum(card.dataset.url, card.dataset.name, true);
-                // Close mobile sidebar if open
-                npSidebar.classList.remove('mobile-open');
-            });
+        audio.addEventListener('loadedmetadata', function() {
+            pbDuration.textContent = formatTime(audio.duration);
+        });
+
+        audio.addEventListener('ended', function() {
+            // Auto-advance to next track
+            if (currentTrackIndex < currentAlbum().tracks.length - 1) {
+                loadTrack(currentTrackIndex + 1, true);
+            } else {
+                isPlaying = false;
+                updatePlayIcons();
+                highlightActiveTrack();
+            }
+        });
+
+        audio.addEventListener('play', function() {
+            isPlaying = true;
+            updatePlayIcons();
+            highlightActiveTrack();
+        });
+
+        audio.addEventListener('pause', function() {
+            isPlaying = false;
+            updatePlayIcons();
+            highlightActiveTrack();
         });
 
         // --- Now Playing overlay toggle ---
@@ -522,104 +549,67 @@ document.addEventListener('DOMContentLoaded', () => {
             npSidebar.classList.remove('mobile-open');
         });
 
-        // --- Track list rendering ---
-        function renderTrackList() {
-            npTrackListEl.innerHTML = '';
-            npTrackCount.textContent = trackList.length + ' song' + (trackList.length !== 1 ? 's' : '');
-            trackList.forEach(function(sound, i) {
-                var row = document.createElement('div');
-                row.className = 'np-track' + (i === currentTrackIndex ? ' active' : '');
-                if (i === currentTrackIndex && !isPlaying) row.className += ' paused';
-                var artStyle = sound.artwork_url
-                    ? 'background-image:url(' + sound.artwork_url.replace('-large', '-t200x200') + ')'
-                    : '';
-                row.innerHTML =
-                    '<div class="np-track__num"><span>' + (i + 1) + '</span>' +
-                    '<div class="np-track__playing-indicator"><div class="np-eq-bar"></div><div class="np-eq-bar"></div><div class="np-eq-bar"></div></div></div>' +
-                    '<div class="np-track__artwork" style="' + artStyle + '"></div>' +
-                    '<div class="np-track__info"><div class="np-track__title">' + (sound.title || 'Track ' + (i + 1)) + '</div>' +
-                    '<div class="np-track__artist-name">' + (sound.user ? sound.user.username : '3D SOUND') + '</div></div>' +
-                    '<span class="np-track__duration">' + formatTime(sound.duration || 0) + '</span>';
-                row.addEventListener('click', function() {
-                    widget.skip(i);
-                    widget.play();
-                });
-                npTrackListEl.appendChild(row);
+        // Album card click handlers
+        albumCards.forEach(function(card) {
+            card.addEventListener('click', function() {
+                loadAlbum(card.dataset.album, true);
+                npSidebar.classList.remove('mobile-open');
             });
-
-            // Update album hero artwork from first track
-            if (trackList.length > 0 && trackList[0].artwork_url) {
-                npArtwork.style.backgroundImage = 'url(' + trackList[0].artwork_url.replace('-large', '-t500x500') + ')';
-            }
-        }
-
-        function highlightActiveTrack() {
-            document.querySelectorAll('.np-track').forEach(function(el, i) {
-                el.classList.toggle('active', i === currentTrackIndex);
-                el.classList.toggle('paused', i === currentTrackIndex && !isPlaying);
-            });
-        }
-
-        // --- Widget event binding ---
-        function bindWidgetEvents() {
-            widget.bind(SC.Widget.Events.PLAY, function() {
-                isPlaying = true;
-                updatePlayIcons();
-                loadTrackInfo();
-                widget.getCurrentSoundIndex(function(index) {
-                    currentTrackIndex = index;
-                    highlightActiveTrack();
-                });
-            });
-
-            widget.bind(SC.Widget.Events.PAUSE, function() {
-                isPlaying = false;
-                updatePlayIcons();
-                highlightActiveTrack();
-            });
-
-            widget.bind(SC.Widget.Events.FINISH, function() {
-                // SoundCloud auto-advances in playlist mode
-            });
-
-            widget.bind(SC.Widget.Events.PLAY_PROGRESS, function(data) {
-                if (trackDuration > 0) {
-                    const pct = (data.currentPosition / trackDuration) * 100;
-                    progressFill.style.width = pct + '%';
-                    pbTime.textContent = formatTime(data.currentPosition);
-                }
-            });
-        }
-
-        // Initial load: READY fires once for the first playlist
-        widget.bind(SC.Widget.Events.READY, function() {
-            fetchSoundsWithRetry(function(sounds) {
-                trackList = sounds;
-                renderTrackList();
-            });
-            loadTrackInfo();
-            bindWidgetEvents();
         });
 
         // --- Playback bar controls ---
-        pbPlay.addEventListener('click', function() { widget.toggle(); });
-        pbNext.addEventListener('click', function() { widget.next(); });
-        pbPrev.addEventListener('click', function() { widget.prev(); });
+        pbPlay.addEventListener('click', function() {
+            if (isPlaying) { audio.pause(); } else { audio.play(); }
+        });
+        pbNext.addEventListener('click', function() { loadTrack(currentTrackIndex + 1, true); });
+        pbPrev.addEventListener('click', function() { loadTrack(currentTrackIndex - 1, true); });
 
         progressWrap.addEventListener('click', function(e) {
-            if (trackDuration <= 0) return;
+            if (!audio.duration) return;
             const rect = progressWrap.getBoundingClientRect();
             const pct = (e.clientX - rect.left) / rect.width;
-            widget.seekTo(pct * trackDuration);
+            audio.currentTime = pct * audio.duration;
         });
 
         // --- Now Playing controls ---
-        npPlay.addEventListener('click', function() { widget.toggle(); });
-        npNext.addEventListener('click', function() { widget.next(); });
-        npPrev.addEventListener('click', function() { widget.prev(); });
+        npPlay.addEventListener('click', function() {
+            if (isPlaying) { audio.pause(); } else { audio.play(); }
+        });
+        npNext.addEventListener('click', function() { loadTrack(currentTrackIndex + 1, true); });
+        npPrev.addEventListener('click', function() { loadTrack(currentTrackIndex - 1, true); });
+
+        // --- Initial load ---
+        currentAlbumKey = 'vib3s';
+        var album = currentAlbum();
+        npAlbumTitle.textContent = album.name;
+        albumCards.forEach(function(card) {
+            card.classList.toggle('active', card.dataset.album === 'vib3s');
+        });
+        renderTrackList();
+        loadTrack(24, false);
+
+        // Autoplay on first user interaction (browser policy requires a gesture)
+        function autoplayOnce() {
+            if (!isPlaying) {
+                audio.play();
+            }
+            document.removeEventListener('click', autoplayOnce);
+            document.removeEventListener('touchstart', autoplayOnce);
+            document.removeEventListener('keydown', autoplayOnce);
+        }
+        // Try immediate play, fall back to waiting for interaction
+        var playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(function() {
+                // Autoplay blocked — wait for user gesture
+                document.addEventListener('click', autoplayOnce);
+                document.addEventListener('touchstart', autoplayOnce);
+                document.addEventListener('keydown', autoplayOnce);
+            });
+        }
 
     }
     }
-    initSoundCloud();
+    initPlayer();
 
 });
