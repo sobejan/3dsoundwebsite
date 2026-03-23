@@ -11,26 +11,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menuToggle');
     const menuOverlay = document.getElementById('menuOverlay');
 
-    // Solid nav on scroll
+    // Solid nav on scroll — switch to solid black once past the hero section
+    const heroSection = document.getElementById('hero');
     const handleNavScroll = () => {
-        nav.classList.toggle('scrolled', document.body.scrollTop > 60);
+        const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+        const heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 300;
+        nav.classList.toggle('scrolled', scrollY > heroBottom - 100);
     };
-    document.body.addEventListener('scroll', handleNavScroll, { passive: true });
+    window.addEventListener('scroll', handleNavScroll, { passive: true });
     handleNavScroll();
 
     // Fullscreen menu toggle
     menuToggle.addEventListener('click', () => {
         const isOpen = menuOverlay.classList.toggle('active');
         menuToggle.classList.toggle('active');
-        document.body.style.overflowY = isOpen ? 'hidden' : 'scroll';
+        document.body.style.overflowY = isOpen ? 'hidden' : '';
     });
+
+    // Close menu via close button
+    const menuClose = document.getElementById('menuClose');
+    if (menuClose) {
+        menuClose.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.style.overflowY = '';
+        });
+    }
 
     // Close menu on link click
     document.querySelectorAll('.menu-overlay__link').forEach(link => {
         link.addEventListener('click', () => {
             menuOverlay.classList.remove('active');
             menuToggle.classList.remove('active');
-            document.body.style.overflowY = 'scroll';
+            document.body.style.overflowY = '';
         });
     });
 
@@ -53,68 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* --------------------------------------------------
-       SCROLL ANIMATIONS — Intersection Observer
+       COUNTERS — show final values immediately
        -------------------------------------------------- */
-    const animElements = document.querySelectorAll('.anim-fade');
-
-    const animObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const parent = entry.target.parentElement;
-                const siblings = parent.querySelectorAll(':scope > .anim-fade');
-                let delay = 0;
-                siblings.forEach((el, i) => {
-                    if (el === entry.target) delay = i * (isMobile() ? 40 : 80);
-                });
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, delay);
-                animObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: isMobile() ? 0.03 : 0.08,
-        rootMargin: isMobile() ? '0px 0px -20px 0px' : '0px 0px -40px 0px'
+    document.querySelectorAll('[data-target]').forEach(el => {
+        el.textContent = el.dataset.target;
     });
-
-    animElements.forEach(el => animObserver.observe(el));
-
-
-    /* --------------------------------------------------
-       COUNTER ANIMATION
-       -------------------------------------------------- */
-    const counters = document.querySelectorAll('[data-target]');
-
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(c => counterObserver.observe(c));
-
-    function animateCounter(el) {
-        const target = parseInt(el.dataset.target, 10);
-        const duration = 2000;
-        const start = performance.now();
-
-        function tick(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            // Ease-out quad
-            const eased = 1 - (1 - progress) * (1 - progress);
-            el.textContent = Math.floor(eased * target);
-            if (progress < 1) {
-                requestAnimationFrame(tick);
-            } else {
-                el.textContent = target;
-            }
-        }
-        requestAnimationFrame(tick);
-    }
 
 
 
@@ -250,24 +206,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* --------------------------------------------------
-       FOOTER EMAIL FORM
+       FOOTER EMAIL FORM (removed from HTML — guarded)
        -------------------------------------------------- */
     const footerForm = document.getElementById('footerForm');
-    footerForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = footerForm.querySelector('.footer__submit');
-        const input = footerForm.querySelector('.footer__input');
-        const originalHTML = btn.innerHTML;
+    if (footerForm) {
+        footerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = footerForm.querySelector('.footer__submit');
+            const input = footerForm.querySelector('.footer__input');
+            const originalHTML = btn.innerHTML;
 
-        btn.innerHTML = '&#10003;';
-        input.value = '';
-        input.placeholder = 'Subscribed!';
+            btn.innerHTML = '&#10003;';
+            input.value = '';
+            input.placeholder = 'Subscribed!';
 
-        setTimeout(() => {
-            btn.innerHTML = originalHTML;
-            input.placeholder = 'Your email';
-        }, 3000);
-    });
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                input.placeholder = 'Your email';
+            }, 3000);
+        });
+    }
 
 
     /* --------------------------------------------------
