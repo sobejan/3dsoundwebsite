@@ -32,7 +32,8 @@
             <a href="#services" class="menu-overlay__link" data-index="03">Services</a>
             <a href="#vision" class="menu-overlay__link" data-index="04">Vision</a>
             <a href="#testimonials" class="menu-overlay__link" data-index="05">Testimonials</a>
-            <a href="#booking" class="menu-overlay__link" data-index="06">Book Now</a>
+            <a href="#now-playing" class="menu-overlay__link" data-index="06" id="menuNowPlaying">Now Playing</a>
+            <a href="#booking" class="menu-overlay__link" data-index="07">Book Now</a>
         </nav>
         <div class="menu-overlay__footer">
             <a href="https://instagram.com/djclickz" target="_blank" rel="noopener">Instagram</a>
@@ -48,11 +49,15 @@
         </div>
         <div class="hero__overlay" aria-hidden="true"></div>
         <div class="hero__content">
-            <h1 class="hero__title anim-hero">Feel the premium sound experience.</h1>
-            <p class="hero__subtitle anim-hero">World class DJs and MCs for events that demand more than background music.</p>
-            <div class="hero__buttons anim-hero">
-                <a href="#booking" class="btn btn--primary">Book Now</a>
-                <a href="#talent" class="btn btn--outline">View the Team</a>
+            <div class="hero__left">
+                <h1 class="hero__title anim-hero">Feel the premium sound experience.</h1>
+            </div>
+            <div class="hero__right anim-hero">
+                <p class="hero__subtitle">World-class <strong>DJs &amp; MCs</strong><br>for events that demand more.</p>
+                <div class="hero__buttons">
+                    <a href="#booking" class="btn btn--primary">Book Now</a>
+                    <a href="#talent" class="btn btn--outline">Meet the Team</a>
+                </div>
             </div>
         </div>
         <div class="hero__scroll" aria-hidden="true">
@@ -506,6 +511,128 @@
         </div>
     </footer>
 
+    <!-- ========== NOW PLAYING OVERLAY VIEW ========== -->
+    <div class="np-overlay" id="npOverlay">
+        <!-- Sidebar: Album library -->
+        <aside class="np-sidebar" id="npSidebar">
+            <div class="np-sidebar__top">
+                <button class="np-header__back" id="npBack">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back
+                </button>
+            </div>
+            <div class="np-sidebar__lib-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h2v16H3zm5 0h2v16H8zm5 2h2v12h-2zm5-2h2v16h-2z"/></svg>
+                <span>Your Library</span>
+            </div>
+            <div class="np-sidebar__albums" id="npAlbumList">
+                <div class="np-album-card active" data-url="https://soundcloud.com/3dsoundcrew/sets/vibes-3" data-name="Vibes 3">
+                    <div class="np-album-card__art" id="albumArt-vibes-3"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Vibes 3</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/vibes-two" data-name="Vibes Two">
+                    <div class="np-album-card__art" id="albumArt-vibes-two"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Vibes Two</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/vibe" data-name="Vibes">
+                    <div class="np-album-card__art" id="albumArt-vibe"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Vibes</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/vib3s-exclusive" data-name="Vib3s Exclusive">
+                    <div class="np-album-card__art" id="albumArt-vib3s-exclusive"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Vib3s Exclusive</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/bounce" data-name="Bounce">
+                    <div class="np-album-card__art" id="albumArt-bounce"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Bounce</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/civics-mixes" data-name="Civics Mixes">
+                    <div class="np-album-card__art" id="albumArt-civics-mixes"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Civics Mixes</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/civics-mixes-2" data-name="Civics Mixes 2">
+                    <div class="np-album-card__art" id="albumArt-civics-mixes-2"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Civics Mixes 2</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/civics-mixes-3-the-final-lap" data-name="Civics Mixes 3 — The Final Lap">
+                    <div class="np-album-card__art" id="albumArt-civics-mixes-3"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Civics Mixes 3 — The Final Lap</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/hold-this-3d-sound-1" data-name="Hold This">
+                    <div class="np-album-card__art" id="albumArt-hold-this"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Hold This</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/love-clickz" data-name="Love Clickz">
+                    <div class="np-album-card__art" id="albumArt-love-clickz"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Love Clickz</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/love-clickz-2-deluxe" data-name="Love Clickz 2 Deluxe">
+                    <div class="np-album-card__art" id="albumArt-love-clickz-2"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">Love Clickz 2 Deluxe</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+                <div class="np-album-card" data-url="https://soundcloud.com/3dsoundcrew/sets/wttf-3d-sound" data-name="WTTF">
+                    <div class="np-album-card__art" id="albumArt-wttf"></div>
+                    <div class="np-album-card__info"><span class="np-album-card__name">WTTF</span><span class="np-album-card__type">Playlist</span></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content: Album header + tracklist -->
+        <div class="np-content" id="npContent">
+            <!-- Album hero gradient header -->
+            <div class="np-album-hero" id="npAlbumHero">
+                <div class="np-album-hero__gradient" id="npHeroGradient"></div>
+                <div class="np-album-hero__inner">
+                    <div class="np-album-hero__art" id="npArtwork"></div>
+                    <div class="np-album-hero__meta">
+                        <span class="np-album-hero__type">Playlist</span>
+                        <h1 class="np-album-hero__title" id="npAlbumTitle">Vibes 3</h1>
+                        <div class="np-album-hero__details">
+                            <img src="assets/images/logo-icon-white.png" alt="" class="np-album-hero__avatar">
+                            <span class="np-album-hero__artist-name">3D SOUND</span>
+                            <span class="np-album-hero__dot">&bull;</span>
+                            <span class="np-album-hero__count" id="npTrackCount">0 songs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls row -->
+            <div class="np-controls-row">
+                <div class="np-controls-row__left">
+                    <button class="np-ctrl-btn np-ctrl-btn--play np-ctrl-btn--large" id="npPlay" aria-label="Play">
+                        <svg class="icon-play" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                    </button>
+                    <button class="np-ctrl-btn" id="npPrev" aria-label="Previous">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                    </button>
+                    <button class="np-ctrl-btn" id="npNext" aria-label="Next">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Track list table -->
+            <div class="np-tracklist">
+                <div class="np-tracklist__header">
+                    <span class="np-tracklist__col np-tracklist__col--num">#</span>
+                    <span class="np-tracklist__col np-tracklist__col--title">Title</span>
+                    <span class="np-tracklist__col np-tracklist__col--duration">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </span>
+                </div>
+                <div id="npTrackList"><div class="np-loading">Loading tracks...</div></div>
+            </div>
+
+        </div>
+
+        <!-- Mobile album drawer toggle -->
+        <button class="np-mobile-lib-btn" id="npMobileLibBtn" aria-label="Browse albums">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h2v16H3zm5 0h2v16H8zm5 2h2v12h-2zm5-2h2v16h-2z"/></svg>
+        </button>
+    </div>
+
     <!-- SoundCloud Widget (hidden) -->
     <iframe id="sc-widget" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay"
         src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/3dsoundcrew/sets/vibes-3&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
@@ -539,6 +666,11 @@
             <div class="playback-bar__time">
                 <span id="pbTime">0:00</span> / <span id="pbDuration">0:00</span>
             </div>
+            <button class="playback-bar__now-playing-link" id="pbOpenNowPlaying" title="Now Playing">
+                <svg class="pb-icon-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><line x1="21" y1="3" x2="14" y2="10"/><path d="M3 12a9 9 0 1 0 9-9"/></svg>
+                <svg class="pb-icon-close" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <span class="pb-label">Open</span>
+            </button>
         </div>
     </div>
 
