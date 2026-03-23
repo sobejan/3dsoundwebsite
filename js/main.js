@@ -13,16 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Solid nav on scroll
     const handleNavScroll = () => {
-        nav.classList.toggle('scrolled', window.scrollY > 60);
+        nav.classList.toggle('scrolled', document.body.scrollTop > 60);
     };
-    window.addEventListener('scroll', handleNavScroll, { passive: true });
+    document.body.addEventListener('scroll', handleNavScroll, { passive: true });
     handleNavScroll();
 
     // Fullscreen menu toggle
     menuToggle.addEventListener('click', () => {
         const isOpen = menuOverlay.classList.toggle('active');
         menuToggle.classList.toggle('active');
-        document.body.style.overflow = isOpen ? 'hidden' : '';
+        document.body.style.overflowY = isOpen ? 'hidden' : 'scroll';
     });
 
     // Close menu on link click
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             menuOverlay.classList.remove('active');
             menuToggle.classList.remove('active');
-            document.body.style.overflow = '';
+            document.body.style.overflowY = 'scroll';
         });
     });
 
@@ -47,9 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(targetId);
             if (!target) return;
             e.preventDefault();
-            const offset = isMobile() ? 60 : 80;
-            const top = target.getBoundingClientRect().top + window.scrollY - offset;
-            window.scrollTo({ top, behavior: 'smooth' });
+            target.scrollIntoView({ behavior: 'smooth' });
         });
     });
 

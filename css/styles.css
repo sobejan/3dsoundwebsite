@@ -31,9 +31,10 @@
 }
 
 html {
-    scroll-behavior: smooth;
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -42,9 +43,13 @@ body {
     color: var(--text-primary);
     line-height: 1.55;
     letter-spacing: -0.01em;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
 }
 
 a {
@@ -250,16 +255,16 @@ ul, ol { list-style: none; }
 }
 
 .nav.scrolled {
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     padding: 16px 0;
 }
 
 .nav__inner {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
+    max-width: 100%;
+    margin: 0;
+    padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -406,12 +411,14 @@ ul, ol { list-style: none; }
    ========================== */
 .hero {
     position: relative;
+    height: 100vh;
     min-height: 100vh;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
     overflow: hidden;
     background: var(--twilight-indigo);
+    scroll-snap-align: start;
 }
 
 /* Hero background image */
@@ -572,9 +579,14 @@ ul, ol { list-style: none; }
    ========================== */
 .showcase {
     position: relative;
-    padding: 140px 0 100px;
+    padding: 0;
     background: var(--twilight-indigo);
     overflow: hidden;
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .showcase::before {
@@ -595,7 +607,7 @@ ul, ol { list-style: none; }
 
 .showcase__header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 48px;
 }
 
 .showcase__about {
@@ -748,38 +760,57 @@ ul, ol { list-style: none; }
    ========================== */
 .talent {
     background: var(--twilight-indigo);
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.talent > .talent__banner {
+    flex-shrink: 0;
+}
+
+.talent > .container {
+    flex: 1;
+    overflow: hidden;
+    padding-bottom: 20px;
 }
 
 .talent__banner {
     background: var(--baltic-blue);
-    padding: 100px 0;
-    margin-bottom: 60px;
+    padding: 30px 0;
+    margin-bottom: 0;
 }
 
 .talent__banner .label {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+}
+
+.talent__banner .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
 }
 
 .talent__section-title {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--wisteria-blue);
-    margin-bottom: 32px;
-    padding-bottom: 16px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
     border-bottom: 2px solid var(--wisteria-blue);
     display: inline-block;
 }
 
 .talent__grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    margin-bottom: 64px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
 .talent__grid--mcs {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
 }
 
 .talent__card {
@@ -795,7 +826,7 @@ ul, ol { list-style: none; }
 
 .talent__card-img {
     position: relative;
-    aspect-ratio: 4/5;
+    aspect-ratio: 3/4;
     overflow: hidden;
 }
 
@@ -848,9 +879,9 @@ ul, ol { list-style: none; }
 }
 
 .talent__card-name {
-    padding: 18px 16px 16px;
+    padding: 10px 10px 8px;
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -938,6 +969,9 @@ ul, ol { list-style: none; }
 .services {
     padding: 140px 0;
     background: var(--steel-azure);
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow: hidden;
 }
 
 .services__header {
@@ -1051,8 +1085,10 @@ ul, ol { list-style: none; }
    ========================== */
 .testimonials {
     padding: 140px 0;
-    background: var(--steel-azure);
+    background: #0a0a1a;
     overflow: hidden;
+    height: 100vh;
+    scroll-snap-align: start;
 }
 
 .testimonials .label {
@@ -1145,6 +1181,9 @@ ul, ol { list-style: none; }
     background: var(--twilight-indigo);
     text-align: center;
     position: relative;
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow: hidden;
 }
 
 .booking::before {
@@ -1246,6 +1285,9 @@ ul, ol { list-style: none; }
     background: var(--steel-azure);
     border-top: 1px solid rgba(245, 240, 235, 0.06);
     padding: 80px 0 32px;
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow: hidden;
 }
 
 .footer__logo-wrap {
@@ -1379,7 +1421,11 @@ ul, ol { list-style: none; }
 /* ---- Tablet: 1024px ---- */
 @media (max-width: 1024px) {
     .talent__grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .talent__grid--mcs {
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .experience__grid {
@@ -1491,6 +1537,7 @@ ul, ol { list-style: none; }
 
     /* -- HERO: proportional scaling, full-width CTA -- */
     .hero {
+        height: 100svh;
         min-height: 100svh;
     }
 
@@ -1600,29 +1647,31 @@ ul, ol { list-style: none; }
         font-size: 1rem;
     }
 
-    /* -- TALENT: 2-col grid, readable titles -- */
+    /* -- TALENT: 3-col grid on mobile to fit all -- */
     .talent__banner {
-        padding: 60px 0;
-        margin-bottom: 40px;
+        padding: 20px 0;
+        margin-bottom: 0;
     }
 
     .talent__grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin-bottom: 48px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-bottom: 12px;
     }
 
     .talent__grid--mcs {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .talent__section-title {
-        font-size: 1.3rem;
+        font-size: 1rem;
+        margin-bottom: 8px;
+        padding-bottom: 6px;
     }
 
     .talent__card-name {
-        font-size: 0.95rem;
-        padding: 14px 12px;
+        font-size: 0.7rem;
+        padding: 6px 6px;
     }
 
     .talent__badge {
