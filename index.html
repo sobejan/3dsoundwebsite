@@ -6,7 +6,7 @@
     <title>3D Sound &amp; Entertainment</title>
     <meta name="description" content="3D Sound & Entertainment is a premier event entertainment company with a curated roster of world-class DJs and MCs available for bookings worldwide.">
     <link rel="icon" type="image/png" href="assets/images/logo-icon-white.png">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
@@ -28,12 +28,11 @@
     <div class="menu-overlay" id="menuOverlay">
         <nav class="menu-overlay__nav">
             <a href="#showcase" class="menu-overlay__link" data-index="01">Showcase</a>
-            <a href="#experience" class="menu-overlay__link" data-index="02">Experience</a>
-            <a href="#talent" class="menu-overlay__link" data-index="03">Talent</a>
-            <a href="#services" class="menu-overlay__link" data-index="04">Services</a>
-            <a href="#vision" class="menu-overlay__link" data-index="05">Vision</a>
-            <a href="#testimonials" class="menu-overlay__link" data-index="06">Testimonials</a>
-            <a href="#booking" class="menu-overlay__link" data-index="07">Book Now</a>
+            <a href="#talent" class="menu-overlay__link" data-index="02">Talent</a>
+            <a href="#services" class="menu-overlay__link" data-index="03">Services</a>
+            <a href="#vision" class="menu-overlay__link" data-index="04">Vision</a>
+            <a href="#testimonials" class="menu-overlay__link" data-index="05">Testimonials</a>
+            <a href="#booking" class="menu-overlay__link" data-index="06">Book Now</a>
         </nav>
         <div class="menu-overlay__footer">
             <a href="https://instagram.com/djclickz" target="_blank" rel="noopener">Instagram</a>
@@ -49,9 +48,12 @@
         </div>
         <div class="hero__overlay" aria-hidden="true"></div>
         <div class="hero__content">
-            <h1 class="hero__title anim-hero">See the premium sound experience.</h1>
+            <h1 class="hero__title anim-hero">Feel the premium sound experience.</h1>
             <p class="hero__subtitle anim-hero">World class DJs and MCs for events that demand more than background music.</p>
-            <a href="#booking" class="btn btn--primary anim-hero">Book Now</a>
+            <div class="hero__buttons anim-hero">
+                <a href="#booking" class="btn btn--primary">Book Now</a>
+                <a href="#talent" class="btn btn--outline">View the Team</a>
+            </div>
         </div>
         <div class="hero__scroll" aria-hidden="true">
             <span>Scroll</span>
@@ -59,85 +61,38 @@
         </div>
     </section>
 
-    <!-- ========== NUMBERED SCROLL SHOWCASE ========== -->
+    <!-- ========== OUR STORY / ABOUT SECTION ========== -->
     <section class="showcase" id="showcase">
         <div class="container">
             <div class="showcase__header anim-fade">
-                <span class="label">What We Bring</span>
-                <h2 class="section-title">Sound Without Limits</h2>
+                <span class="label">Our Story</span>
+                <h2 class="section-title">About 3D Sound</h2>
             </div>
-        </div>
-        <div class="showcase__cards">
-            <div class="showcase__card anim-fade">
-                <div class="showcase__card-img">
-                    <!-- REPLACE: Showcase image 1 — wedding/celebration photo, recommended 800x1000px -->
-                    <div class="placeholder-img"><span>01</span></div>
-                </div>
-                <div class="showcase__card-body">
-                    <span class="showcase__card-num">01</span>
-                    <p class="showcase__card-text">From intimate ceremonies to grand celebrations, we set the tone.</p>
-                    <a href="#services" class="link-arrow">Explore Services</a>
-                </div>
+            <div class="showcase__about anim-fade">
+                <p class="body-text">Founded in Toronto, 3D Sound began as a vision to elevate the way music and sound are experienced globally. What started as a passion-driven DJ collective has grown into a global entertainment brand, delivering curated sound, premium production, and unforgettable moments across weddings, private events, corporate functions, and international stages. Since it's inception in 2005, the 3D team has always maintained an emphasis on quality over quantity. When it comes to our clients' special moments we make no exceptions. We are committed to delivering nothing less than the premium sound experience.</p>
+                <p class="body-text showcase__tagline">At 3D Sound, music has no boundary — experienced around the globe — it's the heartbeat of every experience.</p>
             </div>
-            <div class="showcase__card anim-fade">
-                <div class="showcase__card-img">
-                    <!-- REPLACE: Showcase image 2 — DJ performing/reading crowd photo, recommended 800x1000px -->
-                    <div class="placeholder-img"><span>02</span></div>
+            <div class="showcase__stats anim-fade">
+                <div class="showcase__stat">
+                    <span class="showcase__stat-num">20+</span>
+                    <span class="showcase__stat-label">Years of Experience</span>
                 </div>
-                <div class="showcase__card-body">
-                    <span class="showcase__card-num">02</span>
-                    <p class="showcase__card-text">Our DJs read the room and keep the energy exactly where it needs to be.</p>
-                    <a href="#talent" class="link-arrow">Meet the Roster</a>
+                <div class="showcase__stat">
+                    <span class="showcase__stat-num">500+</span>
+                    <span class="showcase__stat-label">Events Performed</span>
                 </div>
-            </div>
-            <div class="showcase__card anim-fade">
-                <div class="showcase__card-img">
-                    <!-- REPLACE: Showcase image 3 — sound equipment/speakers photo, recommended 800x1000px -->
-                    <div class="placeholder-img"><span>03</span></div>
+                <div class="showcase__stat">
+                    <span class="showcase__stat-num">30+</span>
+                    <span class="showcase__stat-label">Countries Served</span>
                 </div>
-                <div class="showcase__card-body">
-                    <span class="showcase__card-num">03</span>
-                    <p class="showcase__card-text">Premium sound equipment that fills every corner of your venue.</p>
-                    <a href="#services" class="link-arrow">View Equipment</a>
+                <div class="showcase__stat">
+                    <span class="showcase__stat-num">10+</span>
+                    <span class="showcase__stat-label">Artists, DJs & MCs</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== EXPERIENCE HIGHLIGHTS ========== -->
-    <section class="experience" id="experience">
-        <div class="container">
-            <div class="experience__grid">
-                <div class="experience__media anim-fade">
-                    <div class="experience__img-main">
-                        <!-- REPLACE: Main experience image — event setup or DJ booth photo, recommended 700x900px -->
-                        <div class="placeholder-img placeholder-img--tall"><span>Experience</span></div>
-                    </div>
-                    <div class="experience__img-small">
-                        <!-- REPLACE: Small experience image — booking flow or mobile device mockup, recommended 300x300px -->
-                        <div class="placeholder-img placeholder-img--square"><span>Booking</span></div>
-                    </div>
-                </div>
-                <div class="experience__content anim-fade">
-                    <span class="label">The Experience</span>
-                    <h2 class="section-title">Seamless From<br>Start to Finish</h2>
-                    <p class="body-text">From your very first inquiry to the final song of the night, we handle every detail with precision. Tell us about your event, choose from our curated roster of talent, and let us craft an audio experience tailored to your vision.</p>
-                    <p class="body-text">Our booking process is built around you. No complicated back and forth. Just a clear, simple path to an unforgettable event.</p>
-                    <div class="experience__stats">
-                        <div class="experience__stat">
-                            <span class="experience__stat-num" data-target="500">0</span><span class="experience__stat-plus">+</span>
-                            <span class="experience__stat-label">Events Completed</span>
-                        </div>
-                        <div class="experience__stat">
-                            <span class="experience__stat-num" data-target="17">0</span>
-                            <span class="experience__stat-label">Roster Artists</span>
-                        </div>
-                    </div>
-                    <a href="#talent" class="btn btn--primary">Browse Our Roster</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ========== OUR TALENT SECTION ========== -->
     <section class="talent" id="talent">
@@ -154,84 +109,182 @@
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
                         <div class="placeholder-img"><span>DJ JET</span></div>
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ JET">Book Now</a>
+                            <a href="https://www.instagram.com/jethu2jet/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ JET</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ Kharish</span></div>
+                        <img src="assets/images/kharish.jpg" alt="DJ Kharish">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Kharish">Book Now</a>
+                            <a href="https://www.instagram.com/djkharish/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Kharish</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ Gowtham</span></div>
+                        <img src="assets/images/gowtham.jpg" alt="DJ Gowtham">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Gowtham">Book Now</a>
+                            <a href="https://www.instagram.com/djgowthamofficial/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Gowtham</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
                         <div class="placeholder-img"><span>DJ Soundberry</span></div>
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Soundberry">Book Now</a>
+                            <a href="https://www.instagram.com/_soundberry/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Soundberry</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
                         <div class="placeholder-img"><span>DJ Miru</span></div>
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Miru">Book Now</a>
+                            <a href="https://www.instagram.com/_djmiru/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Miru</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ Clickz</span></div>
+                        <img src="assets/images/clickz.jpg" alt="DJ Clickz">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Clickz">Book Now</a>
+                            <a href="https://www.instagram.com/djclickz_/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Clickz</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ Rocket</span></div>
+                        <img src="assets/images/rocket.jpg" alt="DJ Rocket">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Rocket">Book Now</a>
+                            <a href="https://www.instagram.com/djrocket.3d/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Rocket</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>E$TRN</span></div>
+                        <img src="assets/images/estrn.jpg" alt="E$TRN">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="E$TRN">Book Now</a>
+                            <a href="https://www.instagram.com/playestrn/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">E$TRN</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ Wavs</span></div>
+                        <img src="assets/images/wavs.jpg" alt="DJ Wavs">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Wavs">Book Now</a>
+                            <a href="https://www.instagram.com/dj.wavs_/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Wavs</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ Monty</span></div>
+                        <img src="assets/images/monty.jpg" alt="DJ Monty">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Monty">Book Now</a>
+                            <a href="https://www.instagram.com/djmonty.mtl/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Monty</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ Blaze</span></div>
+                        <img src="assets/images/blaze.jpg" alt="DJ Blaze">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Blaze">Book Now</a>
+                            <a href="https://www.instagram.com/dj.blaze__/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Blaze</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ VRP</span></div>
+                        <img src="assets/images/vrp.jpg" alt="DJ VRP">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ VRP">Book Now</a>
+                            <a href="https://www.instagram.com/deejayvrp/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ VRP</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>DJ Evity</span></div>
+                        <img src="assets/images/evity.jpg" alt="DJ Evity">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Evity">Book Now</a>
+                            <a href="https://www.instagram.com/dj.evity/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Evity</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
                         <div class="placeholder-img"><span>DJ Shifty</span></div>
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="DJ Shifty">Book Now</a>
+                            <a href="https://www.instagram.com/djshifty_/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">DJ Shifty</h4>
                 </div>
@@ -242,19 +295,40 @@
             <div class="talent__grid talent__grid--mcs">
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>Mister Show Business</span></div>
+                        <img src="assets/images/mistershowbusiness.jpg" alt="Mister Show Business">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="Mister Show Business">Book Now</a>
+                            <a href="https://www.instagram.com/mistershowbusiness/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">Mister Show Business</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>MC Moni</span></div>
+                        <img src="assets/images/moni.jpg" alt="MC Moni">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="MC Moni">Book Now</a>
+                            <a href="https://www.instagram.com/mcmoni__/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">MC Moni</h4>
                 </div>
                 <div class="talent__card anim-fade">
                     <div class="talent__card-img">
-                        <div class="placeholder-img"><span>MC Cyphr</span></div>
+                        <img src="assets/images/cyphr.jpg" alt="MC Cyphr">
+                        <div class="talent__card-overlay">
+                            <a href="#booking" class="talent__overlay-btn talent__overlay-btn--book" data-artist="MC Cyphr">Book Now</a>
+                            <a href="https://www.instagram.com/3dcyphr/" target="_blank" rel="noopener" class="talent__overlay-btn talent__overlay-btn--ig">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                                Instagram
+                            </a>
+                        </div>
                     </div>
                     <h4 class="talent__card-name">MC Cyphr</h4>
                 </div>
@@ -266,59 +340,40 @@
     <section class="services" id="services">
         <div class="container">
             <div class="services__header anim-fade">
-                <span class="label">Our Expertise</span>
+                <span class="label">Events We Power</span>
                 <h2 class="section-title">What We Do</h2>
+                <p class="services__subtitle">From intimate gatherings to international stages, we bring the energy and expertise your event deserves.</p>
             </div>
-            <div class="services__tabs anim-fade">
-                <button class="services__tab active" data-service="weddings">Weddings</button>
-                <button class="services__tab" data-service="private">Private Events</button>
-                <button class="services__tab" data-service="corporate">Corporate &amp; School</button>
-                <button class="services__tab" data-service="rental">Equipment Rental</button>
-            </div>
-            <div class="services__panels">
-                <div class="services__panel active" id="svc-weddings">
-                    <div class="services__panel-img">
-                        <!-- REPLACE: Wedding DJ/event photo — recommended 1200x700px landscape -->
-                        <div class="placeholder-img placeholder-img--wide"><span>Weddings</span></div>
-                    </div>
-                    <div class="services__panel-content">
-                        <h3 class="services__panel-title">Your Love Story, Our Soundtrack</h3>
-                        <p class="body-text">From the ceremony processional to the last dance of the night, our DJs and MCs specialize in creating magical wedding experiences. We work closely with you to craft the perfect playlist and coordinate seamlessly with your event timeline.</p>
-                        <a href="#booking" class="btn btn--primary">Book for Your Wedding</a>
-                    </div>
+            <div class="services__grid anim-fade">
+                <div class="services__card">
+                    <div class="services__card-icon">&#128141;</div>
+                    <h3 class="services__card-title">Weddings &amp; Receptions</h3>
+                    <p class="services__card-text">Unforgettable celebrations with perfectly curated soundtracks</p>
                 </div>
-                <div class="services__panel" id="svc-private">
-                    <div class="services__panel-img">
-                        <!-- REPLACE: Private party/event photo — recommended 1200x700px landscape -->
-                        <div class="placeholder-img placeholder-img--wide"><span>Private Events</span></div>
-                    </div>
-                    <div class="services__panel-content">
-                        <h3 class="services__panel-title">Your Party, Amplified</h3>
-                        <p class="body-text">Birthdays, anniversaries, house parties, and milestone celebrations. We bring the energy, the sound, and the vibe tailored to your vision. Every private event gets the same premium treatment our clients have come to expect.</p>
-                        <a href="#booking" class="btn btn--primary">Plan Your Event</a>
-                    </div>
+                <div class="services__card">
+                    <div class="services__card-icon">&#127970;</div>
+                    <h3 class="services__card-title">Corporate Events</h3>
+                    <p class="services__card-text">Professional entertainment for galas, conferences, and launches</p>
                 </div>
-                <div class="services__panel" id="svc-corporate">
-                    <div class="services__panel-img">
-                        <!-- REPLACE: Corporate event/school prom photo — recommended 1200x700px landscape -->
-                        <div class="placeholder-img placeholder-img--wide"><span>Corporate &amp; School</span></div>
-                    </div>
-                    <div class="services__panel-content">
-                        <h3 class="services__panel-title">Professional. Polished. Unforgettable.</h3>
-                        <p class="body-text">Company galas, product launches, conferences, proms, homecomings, and spirit weeks. Our talent knows how to match the energy of any professional or academic setting while keeping the entertainment premium and on brand.</p>
-                        <a href="#booking" class="btn btn--primary">Get a Quote</a>
-                    </div>
+                <div class="services__card">
+                    <div class="services__card-icon">&#127878;</div>
+                    <h3 class="services__card-title">Private Parties</h3>
+                    <p class="services__card-text">Exclusive experiences for birthdays, anniversaries, and more</p>
                 </div>
-                <div class="services__panel" id="svc-rental">
-                    <div class="services__panel-img">
-                        <!-- REPLACE: Sound equipment/speakers photo — recommended 1200x700px landscape -->
-                        <div class="placeholder-img placeholder-img--wide"><span>Equipment Rental</span></div>
-                    </div>
-                    <div class="services__panel-content">
-                        <h3 class="services__panel-title">Top Tier Sound, On Demand</h3>
-                        <p class="body-text">Professional grade sound systems, speakers, microphones, lighting rigs, and DJ equipment available for rent. Perfect for venues, independent events, and productions that need exceptional audio without the commitment of ownership.</p>
-                        <a href="#booking" class="btn btn--primary">Inquire About Rentals</a>
-                    </div>
+                <div class="services__card">
+                    <div class="services__card-icon">&#127926;</div>
+                    <h3 class="services__card-title">Nightlife &amp; Clubs</h3>
+                    <p class="services__card-text">High-energy sets that keep the dancefloor moving all night</p>
+                </div>
+                <div class="services__card">
+                    <div class="services__card-icon">&#9992;&#65039;</div>
+                    <h3 class="services__card-title">Destination Events</h3>
+                    <p class="services__card-text">Global reach for international celebrations and getaways</p>
+                </div>
+                <div class="services__card">
+                    <div class="services__card-icon">&#127908;</div>
+                    <h3 class="services__card-title">Concerts</h3>
+                    <p class="services__card-text">Live performances and festival stages that electrify audiences</p>
                 </div>
             </div>
         </div>
@@ -394,6 +449,10 @@
                 <span class="label">Let's Work Together</span>
                 <h2 class="section-title section-title--xl">Ready to Elevate<br>Your Event?</h2>
                 <p class="body-text booking__desc">Tell us about your event and we will match you with the perfect DJ or MC from our world class roster.</p>
+            <div class="booking__inquiry-banner" id="inquiryBanner">
+                <span class="booking__inquiry-text">Inquiring about: <strong id="inquiryArtist"></strong></span>
+                <button class="booking__inquiry-close" id="inquiryClose" aria-label="Clear selection">&times;</button>
+            </div>
                 <div class="hb-p-6795506e6917fe0026f53072-6"></div>
                 <div class="booking__links">
                     <a href="https://instagram.com/djclickz" target="_blank" rel="noopener" class="booking__social">
@@ -447,6 +506,43 @@
         </div>
     </footer>
 
+    <!-- SoundCloud Widget (hidden) -->
+    <iframe id="sc-widget" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/3dsoundcrew/sets/vibes-3&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
+        style="position:absolute;width:0;height:0;border:0;overflow:hidden;"></iframe>
+
+    <!-- Playback Bar -->
+    <div class="playback-bar" id="playbackBar">
+        <div class="playback-bar__progress-wrap" id="progressWrap">
+            <div class="playback-bar__progress" id="progressFill"></div>
+        </div>
+        <div class="playback-bar__inner">
+            <div class="playback-bar__track-info">
+                <div class="playback-bar__artwork" id="pbArtwork"></div>
+                <div class="playback-bar__meta">
+                    <span class="playback-bar__title" id="pbTitle">Loading...</span>
+                    <span class="playback-bar__artist" id="pbArtist">3D SOUND</span>
+                </div>
+            </div>
+            <div class="playback-bar__controls">
+                <button class="playback-bar__btn" id="pbPrev" aria-label="Previous track">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                </button>
+                <button class="playback-bar__btn playback-bar__btn--play" id="pbPlay" aria-label="Play">
+                    <svg class="icon-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="icon-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+                </button>
+                <button class="playback-bar__btn" id="pbNext" aria-label="Next track">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                </button>
+            </div>
+            <div class="playback-bar__time">
+                <span id="pbTime">0:00</span> / <span id="pbDuration">0:00</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://w.soundcloud.com/player/api.js"></script>
     <script src="js/main.js"></script>
     <img height="1" width="1" style="display:none" src="https://www.honeybook.com/p.png?pid=6795506e6917fe0026f53072" alt="">
     <script>
