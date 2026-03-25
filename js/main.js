@@ -28,16 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflowY = isOpen ? 'hidden' : '';
     });
 
-    // Close menu via close button
-    const menuClose = document.getElementById('menuClose');
-    if (menuClose) {
-        menuClose.addEventListener('click', () => {
-            menuOverlay.classList.remove('active');
-            menuToggle.classList.remove('active');
-            document.body.style.overflowY = '';
-        });
-    }
-
     // Close menu on link click
     document.querySelectorAll('.menu-overlay__link').forEach(link => {
         link.addEventListener('click', () => {
