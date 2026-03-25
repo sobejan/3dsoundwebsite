@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You — 3D Sound &amp; Entertainment</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Thank you for your booking request. The 3D Sound team will be in touch within 24 hours.">
+
+    <link rel="icon" type="image/webp" href="assets/images/logo-icon-white.webp">
+
+    <!-- Preload critical font -->
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KU7NSg.woff2" crossorigin>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=3">
+</head>
+<body>
+
+    <!-- ========== STICKY NAVIGATION ========== -->
+    <header class="nav scrolled" id="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="nav__logo"><img src="assets/images/logo-full-white.webp" alt="3D Sound & Entertainment" class="nav__logo-img" width="183" height="55"></a>
+            <button class="nav__hamburger" id="menuToggle" aria-label="Open menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== FULLSCREEN OVERLAY MENU ========== -->
+    <div class="menu-overlay" id="menuOverlay">
+        <button class="menu-overlay__close" id="menuClose" aria-label="Close menu">&times;</button>
+        <nav class="menu-overlay__nav">
+            <a href="index.html" class="menu-overlay__link" data-index="01">Home</a>
+            <a href="index.html#showcase" class="menu-overlay__link" data-index="02">Our Story</a>
+            <a href="index.html#talent" class="menu-overlay__link" data-index="03">The Roster</a>
+            <a href="index.html#services" class="menu-overlay__link" data-index="04">What We Do</a>
+            <a href="index.html#testimonials" class="menu-overlay__link" data-index="05">Client Stories</a>
+        </nav>
+        <div class="menu-overlay__footer">
+            <a href="https://www.instagram.com/3dsoundent/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.youtube.com/@3dsoundent" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a href="https://open.spotify.com/artist/1a5l5rG8z48axSF6NRK7Xd?si=Gg3PZNduRzmr4iUiyt74xg" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a href="https://music.apple.com/ca/artist/3d-sound/1524553857" target="_blank" rel="noopener noreferrer">Apple Music</a>
+            <a href="https://soundcloud.com/3dsoundcrew" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+            <a href="index.html#booking">Booking Portal</a>
+        </div>
+    </div>
+
+    <!-- ========== THANK YOU HERO ========== -->
+    <section class="bookings-hero">
+        <div class="container">
+            <span class="label">Confirmation</span>
+            <h1 class="section-title section-title--xl">You're All Set!</h1>
+            <p class="body-text bookings-hero__desc">Your booking request has been received. The 3D Sound team will be in touch within 24 hours to discuss your event. Keep an ear out for an email or text from us.</p>
+            <div style="margin-top: 40px;">
+                <a href="index.html" class="btn btn--primary">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__logo-wrap">
+                <img src="assets/images/logo-full-white.webp" alt="3D Sound & Entertainment" class="footer__logo-img" loading="lazy" width="217" height="65">
+            </div>
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <h4 class="footer__heading">Discover</h4>
+                    <a href="index.html#services" class="footer__link">Services</a>
+                    <a href="index.html#talent" class="footer__link">Talent</a>
+                    <a href="index.html#showcase" class="footer__link">Showcase</a>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__heading">Connect</h4>
+                    <a href="index.html#booking" class="footer__link">Booking Portal</a>
+                    <a href="index.html#testimonials" class="footer__link">Client Stories</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 3D Sound &amp; Entertainment. All rights reserved.</p>
+                <a href="#" class="footer__top-link" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var menuToggle = document.getElementById('menuToggle');
+          var menuOverlay = document.getElementById('menuOverlay');
+          var menuClose = document.getElementById('menuClose');
+
+          menuToggle.addEventListener('click', function() {
+              var isOpen = menuOverlay.classList.toggle('active');
+              menuToggle.classList.toggle('active');
+              document.body.style.overflowY = isOpen ? 'hidden' : '';
+          });
+
+          if (menuClose) {
+              menuClose.addEventListener('click', function() {
+                  menuOverlay.classList.remove('active');
+                  menuToggle.classList.remove('active');
+                  document.body.style.overflowY = '';
+              });
+          }
+
+          document.querySelectorAll('.menu-overlay__link').forEach(function(link) {
+              link.addEventListener('click', function() {
+                  menuOverlay.classList.remove('active');
+                  menuToggle.classList.remove('active');
+                  document.body.style.overflowY = '';
+              });
+          });
+      });
+    </script>
+</body>
+</html>
