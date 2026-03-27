@@ -1088,6 +1088,14 @@ ul, ol { list-style: none; }
     color: var(--wisteria-blue);
 }
 
+.footer__link--email {
+    color: var(--accent);
+}
+
+.footer__link--email:hover {
+    color: #a8bdd8;
+}
+
 .footer__signup-text {
     font-size: 0.9rem;
     color: var(--text-secondary);
